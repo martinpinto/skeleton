@@ -1,5 +1,4 @@
 ## Project description
-YouWished is a collection of TheInternetWishlist posts.
 This repository uses node.js, espress.js and Elasticsearch as its stack.
 
 In order to get this project running, you must have node.js and Elasticsearch installed on your computer.
