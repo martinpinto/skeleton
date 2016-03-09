@@ -1,0 +1,23 @@
+{
+  "engine": {
+    "name" : "YouWishedddd",
+    "currentAPIVersion": 1,
+    "dbConfig": {
+      "mongodb": {
+        "url": "mongodb://elastic_user:333mpb77@localhost:27017/veto",
+        "user": "elastic_user",
+        "pass": "333mpb77",
+        "host": "localhost",
+        "port": "27017",
+        "index": "poliquo"
+      },
+      "elasticsearch": {
+        "host": "127.0.0.1",
+        "port": 9200,
+        "log": "trace",
+        "index": "veto",
+        "types": ["quotes", "authors", "topics"]
+      }
+    }
+  }
+}
