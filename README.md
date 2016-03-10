@@ -6,7 +6,7 @@ In order to get this project running, you must have node.js and MongoDB or Elast
 ## Choosing the database
 
 ### CouchDB
-[ ] Integration coming soon
+[  ] Integration coming soon
 
 ### MongoDB
 If you want to choose the MongoDB functionality, you must before install MongoDB and start the mongod server. The settings for MongoDB can be found under: ./bin/config/mongodb_config.js. In order to use MongoDB just active MongoDB and its routes in app.js.
@@ -22,10 +22,10 @@ Start the node server with: **node server.js** from the command line or start th
 Open the browser and navigate to **localhost:3000** and you are all set!
 
 ### TODO
-[ ] CouchDB Integration
-[ ] Docker Integration
-[ ] TOML configuration
-[ ] Better Logging
+* [  ] CouchDB Integration
+* [  ] Docker Integration
+* [  ] TOML configuration
+* [  ] Better Logging
 
 ### Stack
 
