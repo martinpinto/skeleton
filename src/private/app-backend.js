@@ -11,19 +11,18 @@ var express = require('express'),
     compression = require('compression'),
     config = require('config');
 
-// activate mongodb and its routes
-var api = require('./private/routes/api');
+// activate database and its routes
+var api = require('./routes/api');
 
 var app = express();
 
 var currentAPIVersion = config.get('engine.currentAPIVersion');
 
 // view engine setup
-app.set('views', __dirname + '/public');
+app.set('views', __dirname.replace('/private', '/public'));
 app.set('view engine', 'html');
 
-// uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname.replace('/private', '/public') + '/images/favicon.ico'));
 app.use(compression()); // compress all requests
 app.use(logger('dev'));
 app.use(bodyParser.json()); // parse application/json
@@ -36,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // make a public folder for express available
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname.replace('/private', '/public')));
 
 // set the API routes in express
 app.use('/api', api);
