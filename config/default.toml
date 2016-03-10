@@ -1,10 +1,10 @@
 # General configuration for the application
 name = "skeleton-app"
 api_version = 1
+environment = "development" # "development" or "production"
 
 # Database configuration
 [database]
-
     [database.mongodb]
     url = "mongodb://skeleton-user:testpassword@localhost:27017/veto"
     user = "skeleton-user"
@@ -15,8 +15,12 @@ api_version = 1
     
     [database.elasticsearch]
     host = "127.0.0.1"
-    post = 9200
+    port = 9200
     log = "trace"
     index = "veto"
-    types = ["quotes", "authors", "topics"]
+    types = ["quotes"]
     
+    [database.couchdb]
+    host = "127.0.0.1"
+    port = "5984"
+    databases = ["test"]

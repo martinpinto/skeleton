@@ -8,7 +8,7 @@ var host = config.database.elasticsearch.host;
 var port = config.database.elasticsearch.port;
 var log = config.database.elasticsearch.log;
 
-module.exports.client = new elasticsearch.Client({
+module.exports = new elasticsearch.Client({
   host: host + ':' + port,
   log: log
 });

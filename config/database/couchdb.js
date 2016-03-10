@@ -1,4 +1,6 @@
 // CouchDB ===========================================
-var nano = require('nano')('http://localhost:5984');
+var acquire = require('acquire');
+var config = acquire('config');
+var nano = require('nano')(config.database.couchdb.host + ":" + config.database.couchdb.port);
 
-module.exports.nano = nano;
+module.exports = nano;

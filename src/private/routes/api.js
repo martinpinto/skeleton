@@ -22,9 +22,6 @@ var elastic = acquire('elasticsearch');
 var esIndex = config.database.elasticsearch.index;
 var esTypes = config.database.elasticsearch.types;
 var esTypeQuotes = esTypes[0]; // quotes elasticsearch type
-var esTypeAuthors = esTypes[1]; // authors elasticsearch type
-var esTypeTopics = esTypes[2]; // topics elasticsearch type
-
 
 /**
  *  Test route
@@ -35,89 +32,6 @@ router.get('/', function (req, res) {
     console.log(req.query.name);
     console.log(req.query);
     res.send(200);
-});
-
-///////////////////////////////// AUTHORS /////////////////////////////////
-
-/**
- * Fetches all authors
- * @param
- * @param
- * @param
- */
-router.get('/authors/', function (req, res) {
-  elastic.client.search({
-    index: esIndex,
-    type: esTypeAuthors,
-    q: 'type:author',
-    size: 1000
-  }, function (error, response) {
-    if (response) {
-      res.jsonp(response.hits.hits);
-    } else {
-      res.send('Could not find any authors!');
-    }
-  });
-});
-
-/**
- *  Fetches an existing author by ID
- *  @param id the ID of the author of the quote
- */
-router.get('/authors/:id', function (req, res, next) {
-  elastic.client.get({
-    index: esIndex,
-    type: esTypeAuthors,
-    id: req.params.id
-  }, function (error, response) {
-    console.log(response);
-    if (response) {
-      res.json(response._source);
-    } else {
-      res.send('Could not find any quotes!');
-    }
-  });
-});
-
-/**
- *  Updates an existing author
- *  @param id the ID of the author
- */
-router.put('/authors/:id', function (req, res) {
-
-});
-
-/**
- *  Inserts a new author
- *  @param
- *  @param
- *  @param
- */
-router.post('/authors/', function (req, res, next) {
-    console.log(req);
-    console.log(res);
-    elastic.client.index({
-        index: esIndex,
-        type: esTypeAuthors,
-        body: {
-            "tweet": {
-                "user": req.query.user,
-                "post_date": new Date(),
-                "message": req.query.message
-            }
-        }
-    }, function (error, response) {
-        console.log(response);
-        res.send(req.query.message);
-    });
-});
-
-/**
- *  Deletes an existing author
- *  @param id the ID of the author
- */
-router.delete('/authors/:id', function (req, res) {
-
 });
 
 ///////////////////////////////// QUOTES /////////////////////////////////
@@ -140,7 +54,6 @@ router.get('/quotes/search', function (req, res) {
       console.log('Could not find any quotes!');
     }
   });
-  res.render('quotes');
 });
 
 /**
