@@ -1,8 +1,8 @@
 // MAIN MODULE
-var youWishedApp = angular.module('youWished', ['ngRoute', 'ngResource']);
+var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
 
 // ROUTES
-youWishedApp.config(function($routeProvider) {
+weatherApp.config(function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'html/home.htm',
@@ -15,10 +15,20 @@ youWishedApp.config(function($routeProvider) {
 });
 
 // CONTROLLERS
-youWishedApp.controller('homeController', ['$scope', function($scope) {
+weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
+    $scope.city = cityService.city;
+    
+    $scope.$watch('city', function() {
+        cityService.city = $scope.city;
+    });
     
 }]);
 
-youWishedApp.controller('forecastController', ['$scope', function($scope) {
-    
+weatherApp.controller('forecastController', ['$scope', 'cityService', function($scope, cityService) {
+    $scope.city = cityService.city;
 }]);
+
+// SERVICES
+weatherApp.service('cityService', function() {
+    this.city = 'New York, NY';
+});

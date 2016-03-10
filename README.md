@@ -17,7 +17,7 @@ The settings for MongoDB can be found under: ./bin/config/elasticsearch_config.j
 In order to use MongoDB just active Elasticsearch and its routes in app.js.
 
 ## Starting the project
-Start the node server with: **node server.js** from the command line or start the project in debug mode using: **DEBUG=es_template:* ./bin/www** or if you have nodemon installed use: **nodemon --debug ./bin/www**
+Start the node server with: **node server.js** from the command line or start the project in debug mode using: **DEBUG=es_template:* ./bin/start** or if you have nodemon installed use: **nodemon --debug ./bin/start**
 
 Open the browser and navigate to **localhost:3000** and you are all set!
 
