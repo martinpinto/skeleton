@@ -9,33 +9,45 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     compression = require('compression'),
-    config = require('config');
+    acquire = require('acquire'),
+    config = acquire('config'),
+    fs = require('fs'),
+    concat = require('concat-stream');
 
-// activate database and its routes
-var api = require('./routes/api');
+var app = express(); // create the express app
 
-var app = express();
+// fetch current API version from configuration
+var currentAPIVersion = config.api_version;
 
-var currentAPIVersion = config.get('engine.currentAPIVersion');
-
-// view engine setup
+// view engine setup, default to html
 app.set('views', __dirname.replace('/private', '/public'));
 app.set('view engine', 'html');
 
 app.use(favicon(__dirname.replace('/private', '/public') + '/images/favicon.ico'));
 app.use(compression()); // compress all requests
-app.use(logger('dev'));
+
+// set up the logger depending on the environment
+if (app.get('env') == 'production') {
+  app.use(logger('common', { skip: function(req, res) { return res.statusCode < 400 }, stream: __dirname + '/../morgan.log' }));
+} else {
+  app.use(logger('dev'));
+}
+
 app.use(bodyParser.json()); // parse application/json
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({
     type: 'application/vnd.api+json'
 })); 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // make a public folder for express available
 app.use(express.static(__dirname.replace('/private', '/public')));
+
+// activate database and its routes
+var api = require('./routes/api');
 
 // set the API routes in express
 app.use('/api', api);

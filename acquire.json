@@ -1,3 +1,7 @@
 {
- "elasticsearch": "config/elasticsearch.js" 
+    "app": "src/private/app-backend.js",
+    "config": "config/config.js",
+    "elasticsearch": "config/database/elasticsearch.js",
+    "mongodb": "config/database/mongodb.js",
+    "couchdb": "config/database/couchdb.js"
 }

@@ -6,7 +6,8 @@
  */
 var express = require('express');
 var router = express.Router();
-var config = require('config');
+var acquire = require('acquire');
+var config = acquire('config');
 
 /************
  * API Routes
@@ -14,14 +15,12 @@ var config = require('config');
 /*
  * This router handler handles all calls to the API.
  */
-var express = require('express');
-var router = express.Router();
-var elastic = require('../../../config/elasticsearch');
-var config = require('config');
+
+var elastic = acquire('elasticsearch');
 
 // Elasticsearch information
-var esIndex = config.get('engine.dbConfig.elasticsearch.index');
-var esTypes = config.get('engine.dbConfig.elasticsearch.types');
+var esIndex = config.database.elasticsearch.index;
+var esTypes = config.database.elasticsearch.types;
 var esTypeQuotes = esTypes[0]; // quotes elasticsearch type
 var esTypeAuthors = esTypes[1]; // authors elasticsearch type
 var esTypeTopics = esTypes[2]; // topics elasticsearch type
@@ -237,74 +236,6 @@ router.post('/quotes', function (req, res) {
  *  @param id the ID of the quote
  */
 router.delete('/quotes/:id', function (req, res) {
-
-});
-
-///////////////////////////////// TOPICS /////////////////////////////////
-
-/**
- * Fetches all topics
- * @param
- * @param
- * @param
- */
-router.get('/topics/', function (req, res) {
-  elastic.client.search({
-    index: esIndex,
-    type: esTypeTopics,
-    q: 'type:topic',
-    size: 1000
-  }, function (error, response) {
-    if (response) {
-      res.json(response.hits.hits);
-    } else {
-      res.send('Could not find any topics!');
-    }
-  });
-});
-
-/**
- *  Fetches an existing topic by ID
- *  @param id the ID of the topic of the quote
- */
-router.get('/topics/:id', function (req, res) {
-  elastic.client.get({
-    index: esIndex,
-    type: esTypeTopics,
-    id: req.params.id
-  }, function (error, response) {
-    console.log(response);
-    if (response) {
-      res.json(response._source);
-    } else {
-      res.send('Could not find any quotes!');
-    }
-  });
-});
-
-/**
- *  Updates an existing topic
- *  @param id the ID of the topic
- */
-router.put('/topics/:id', function (req, res) {
-
-});
-
-/**
- *  Inserts a new topic
- *  @param
- *  @param
- *  @param
- */
-router.post('/topics/', function (req, res) {
-
-});
-
-/**
- *  Deletes an existing topic
- *  @param id the ID of the topic
- */
-router.delete('/topics/:id', function (req, res) {
 
 });
 
