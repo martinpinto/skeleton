@@ -24,7 +24,7 @@ Open the browser and navigate to **localhost:3000** and you are all set!
 ### TODO
 * [  ] CouchDB Integration
 * [  ] Docker Integration
-* [  ] TOML configuration
+* [ x ] TOML configuration
 * [  ] Better Logging
 
 ### Stack
