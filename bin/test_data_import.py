@@ -6,5 +6,5 @@ authorPayload = [
 ]
 
 for payload in authorPayload:
-	r = requests.put("http://localhost:9200/veto/authors", data=payload)
+	r = requests.put("http://localhost:9200/test/testdocument", data=payload)
 	print str(r.status_code) + ": " + r.content

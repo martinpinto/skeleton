@@ -42,6 +42,7 @@ app.use(express.static(__dirname.replace('/private', '/public')));
 var api = require('./routes/api');
 
 // set the API routes in express
+// TODO: use API version in routes
 app.use('/api', api);
 
 // catch 404 and forward to error handler
@@ -61,23 +62,6 @@ app.use(function (req, res, next) {
 
 // error handlers
 app.set('env', config.environment);
-
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    // development error handler: will print stacktrace
-    if (app.get('env') === 'development') {
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    // production error handler
-    } else if (app.get('env') === 'production') {
-        res.render('error', {
-            message: err.message,
-            error: {}
-        }); 
-    }
-});
 
 // to start app in debug mode use: DEBUG=es_template:* ./bin/www OR nodemon --debug ./bin/www
 module.exports = app;

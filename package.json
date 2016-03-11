@@ -1,6 +1,6 @@
 {
   "name": "Skeleton",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/start"
@@ -17,7 +17,6 @@
     "express": "~4.11.1",
     "hjs": "~0.0.6",
     "mocha": "x.x.x",
-    "mongoose": "x.x.x",
     "nano": "^6.2.0",
     "serve-favicon": "~2.2.0",
     "sugar": "x.x.x",
