@@ -36,7 +36,7 @@ weatherApp.controller('homeController', ['$scope', 'cityService', function($scop
 weatherApp.controller('forecastController', ['$scope', 'cityService', '$resource', '$routeParams', function($scope, cityService, $resource, $routeParams) {
     $scope.city = cityService.city;
     
-    $scope.days = $routeParams.days || 2; // default to 2 
+    $scope.days = $routeParams.days || '2'; // default to 2 
     
     var appid = '829cd2f80080d0cc54367583001a15dd';
     $scope.weatherApi = $resource('http://api.openweathermap.org/data/2.5/forecast/daily?appid=' + appid, { callback: 'JSON_CALLBACK' }, { get: { method: 'JSONP' }});
@@ -45,5 +45,5 @@ weatherApp.controller('forecastController', ['$scope', 'cityService', '$resource
     
     $scope.convertToDate = function convertToDate(dt) {
         return new Date(dt * 1000);
-    }
+    };
 }]);
