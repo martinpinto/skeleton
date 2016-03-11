@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/martinpinto/skeleton.svg?branch=master)](https://travis-ci.org/martinpinto/skeleton) 
+
 ## Project description
 This repository is a minimalistic stack for node.js, espress.js, and ElasticSearch or/and CouchDB. Express.js does not use the templating language Jade. The use of plain HTML is also possible (e.g. in combination with Angular.js). It contains a sample AngularJS weather application.
 
