@@ -33,7 +33,7 @@ If you want to choose the ElasticSearch functionality, you must before install E
 The settings for ElasticSearch can be found under: ./config/default.toml.
 
 ## Starting the project
-Start the node server with: **node ./bin/start** from the command line or start the project in debug mode using: **DEBUG=es_template:* ./bin/start** or if you have nodemon installed use: **nodemon --debug ./bin/start**
+Start the node server with: **npm start** from the command line. Alternatively you can start the project in debug mode using: **DEBUG=es_template:* ./bin/start** or if you have nodemon installed use: **nodemon --debug ./bin/start**
 
 Open the browser and navigate to **localhost:3000** and you are all set!
 

@@ -47,3 +47,15 @@ weatherApp.controller('forecastController', ['$scope', 'cityService', '$resource
         return new Date(dt * 1000);
     };
 }]);
+
+// DIRECTIVES
+weatherApp.directive('weatherReport', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'html/directives/weatherReport.html',
+        replace: true,
+        scope: {
+            
+        }
+    };
+});
