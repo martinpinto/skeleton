@@ -41,10 +41,10 @@ The settings for ElasticSearch can be found under: ./config/default.toml.
 npm install
 
 # build and run the server
-**npm start**
+npm start
 
 # build and run the server with monitoring of changes
-**npm run serve**
+npm run serve
 ```
 
 Open the browser and navigate to **localhost:3000** and you are all set!
