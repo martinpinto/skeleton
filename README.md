@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/martinpinto/skeleton.svg?branch=master)](https://travis-ci.org/martinpinto/skeleton) 
 
+# Skeleton
+
 ## Project description
 This repository is a minimalistic stack for node.js, espress.js, and ElasticSearch or/and CouchDB. Express.js does not use the templating language Jade. The use of plain HTML is also possible (e.g. in combination with Angular.js). This project contains a sample AngularJS weather application.
 
@@ -33,25 +35,47 @@ If you want to choose the ElasticSearch functionality, you must before install E
 The settings for ElasticSearch can be found under: ./config/default.toml.
 
 ## Starting the project
-Start the node server with: **npm start** from the command line. Alternatively you can start the project in debug mode using: **DEBUG=es_template:* ./bin/start** or if you have nodemon installed use: **nodemon --debug ./bin/start**
+
+```
+# install dependencies
+npm install
+
+# build and run the server
+**npm start**
+
+# build and run the server with monitoring of changes
+**npm run serve**
+```
 
 Open the browser and navigate to **localhost:3000** and you are all set!
+
+*Note: Alternatively you can start the project in debug mode using: **DEBUG=es_template:* ./bin/start** or if you have nodemon installed use: **nodemon --debug ./bin/start***
+
+## Cleaning
+
+```
+# remove "node_modules"
+npm run clean
+```
+
+## Requirements
+* `node` >= 5.0.0
+* `npm` >= 3.0.0
 
 ## TODO
 [x] CouchDB Integration
 
-[  ] Docker Integration
+[x] Docker Integration
 
 [x] TOML configuration
 
 [  ] Better Logging
 
-## Stack
+[x] Karma integration
 
-[node.js](http://nodejs.org/)
+## Stack/Technologies
 
-[express.js](http://expressjs.com)
-
-[ElasticSearch](http://elastic.co)
-
-[CouchDB](http://couchdb.apache.org/)
+* [node.js](http://nodejs.org/)
+* [express.js](http://expressjs.com)
+* [ElasticSearch](http://elastic.co)
+* [CouchDB](http://couchdb.apache.org/)
