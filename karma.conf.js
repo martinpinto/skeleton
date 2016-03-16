@@ -13,7 +13,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'src/public/tests/*.test.js',
-      'src/private/tests/*.test.js'
+      'src/private/tests/*.test.js',
+      'config/test/angular.min.js',
+      'config/test/angular-mocks.js'
     ],
 
     // list of files to exclude
